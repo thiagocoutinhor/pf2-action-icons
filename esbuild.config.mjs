@@ -1,6 +1,7 @@
 import esbuild from "esbuild";
 import process from "process";
 import builtins from "builtin-modules";
+import { config } from "dotenv";
 
 const banner =
 `/*
@@ -9,13 +10,18 @@ if you want to view the source, please visit the github repository of this plugi
 */
 `;
 
+config()
+
 const prod = (process.argv[2] === "production");
+
+const dir = prod ? './' : process.env.OUTDIR
+console.log(dir)
 
 const context = await esbuild.context({
 	banner: {
 		js: banner,
 	},
-	entryPoints: ["main.ts"],
+	entryPoints: ["src/main.ts", "src/styles.css"],
 	bundle: true,
 	external: [
 		"obsidian",
@@ -33,12 +39,14 @@ const context = await esbuild.context({
 		"@lezer/lr",
 		...builtins],
 	format: "cjs",
-	target: "es2018",
+	target: "es2020",
 	logLevel: "info",
+	minify: true,
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
-	outfile: "main.js",
-});
+	outdir: dir,
+	metafile: true
+})
 
 if (prod) {
 	await context.rebuild();

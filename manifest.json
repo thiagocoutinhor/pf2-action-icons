@@ -1,11 +1,10 @@
 {
-	"id": "obsidian-sample-plugin",
-	"name": "Sample Plugin",
-	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"id": "obsidian-pf2-actions",
+	"name": "Pathfinder 2E Actions",
+	"version": "0.1.0",
+	"minAppVersion": "1.3.5",
+	"description": "This is an Pathfinder 2E plugin for displaying action icons in Obsidian",
+	"author": "Thiago Coutinho",
+	"authorUrl": "https://github.com/thiagocoutinhor",
 	"isDesktopOnly": false
 }
