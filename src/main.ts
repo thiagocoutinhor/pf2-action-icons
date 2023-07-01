@@ -1,27 +1,32 @@
-import { App, Editor, MarkdownPostProcessor, MarkdownPostProcessorContext, MarkdownView, Plugin, Setting } from 'obsidian';
+/*
+ * inspired and adapted from https://github.com/javalent/dice-roller
+*/
+
+import { MarkdownPostProcessorContext, MarkdownRenderChild, Plugin } from 'obsidian';
+import { pf2ActionsLivePlugin } from './live-preview'
 import Pf2ActionsSettingsTab, { DEFAULT_SETTINGS, Pf2ActionsSettings } from './settings';
 
-const PF2_CLASS = 'pf2-actions'
+export const PF2_CLASS = 'pf2-actions'
 
 export default class Pf2Actions extends Plugin {
 	settings: Pf2ActionsSettings;
 
-	private async getTransformations() {
+	actionReplacements() {
 		const trigger = this.settings.triggerWord
 		return [
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.oneActionString}\\s*$`, 'ig'), replacement: '1' },
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.twoActionString}\\s*$`, 'ig'), replacement: '2' },
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.threeActionString}\\s*$`, 'ig'), replacement: '3' },
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.reactionActionString}\\s*$`, 'ig'), replacement: 'r' },
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.freeActionString}\\s*$`, 'ig'), replacement: 'f' },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.oneActionString}\\s*$`, 'ig'), actionText: '1' },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.twoActionString}\\s*$`, 'ig'), actionText: '2' },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.threeActionString}\\s*$`, 'ig'), actionText: '3' },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.reactionActionString}\\s*$`, 'ig'), actionText: 'r' },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.freeActionString}\\s*$`, 'ig'), actionText: 'f' },
 		]
 	}
 
 	async onload() {
-		await this.loadSettings();
+		await this.loadSettings()
 
 		// This adds a settings tab so the user can configure various aspects of the plugin
-		this.addSettingTab(new Pf2ActionsSettingsTab(this.app, this));
+		this.addSettingTab(new Pf2ActionsSettingsTab(this.app, this))
 
 		// This register the plugin to process the text
 		this.registerMarkdownPostProcessor(this.markdownPostProcessor.bind(this));
@@ -31,11 +36,11 @@ export default class Pf2Actions extends Plugin {
 	}
 
 	async loadSettings() {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData())
 	}
 
 	async saveSettings() {
-		await this.saveData(this.settings);
+		await this.saveData(this.settings)
 	}
 
 	async markdownPostProcessor(element: HTMLElement, context: MarkdownPostProcessorContext): Promise<any> {
@@ -47,17 +52,31 @@ export default class Pf2Actions extends Plugin {
 		}
 
 		// Get all the transformations that need to be done...
-		const transformations = await this.getTransformations()
+		const replacements = this.actionReplacements()
 
 		// ... and does them
-		codes.forEach(code => {
-			// console.log(code.innerText)
-			for (const transformation of transformations) {
-				if (code.innerText.match(transformation.regex)) {
-					const actionHolder = element.createSpan({ text: transformation.replacement, cls: PF2_CLASS})
-					code.replaceWith(actionHolder)
+		codes.forEach(codeBlock => {
+			for (const replacement of replacements) {
+				if (codeBlock.innerText.match(replacement.regex)) {
+					context.addChild(new ActionMarkdownRenderChild(codeBlock, replacement.actionText))
+					break
 				}
 			}
 		})
+	}
+}
+
+class ActionMarkdownRenderChild extends MarkdownRenderChild {
+
+	constructor(
+		element: HTMLElement,
+		private actionText: string
+	) {
+		super(element)
+	}
+
+	onload(): void {
+		const action = this.containerEl.createSpan({ text: this.actionText, cls: PF2_CLASS})
+		this.containerEl.replaceWith(action)
 	}
 }
