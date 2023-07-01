@@ -14,11 +14,11 @@ export default class Pf2Actions extends Plugin {
 	actionReplacements() {
 		const trigger = this.settings.triggerWord
 		return [
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.oneActionString}\\s*$`, 'ig'), actionText: '1' },
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.twoActionString}\\s*$`, 'ig'), actionText: '2' },
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.threeActionString}\\s*$`, 'ig'), actionText: '3' },
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.reactionActionString}\\s*$`, 'ig'), actionText: 'r' },
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.freeActionString}\\s*$`, 'ig'), actionText: 'f' },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.freeActionString}\\s*$`, 'ig'), actionText: '⭓' },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.oneActionString}\\s*$`, 'ig'), actionText: '⬻' },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.twoActionString}\\s*$`, 'ig'), actionText: '⬺' },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.threeActionString}\\s*$`, 'ig'), actionText: '⬽' },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.reactionActionString}\\s*$`, 'ig'), actionText: '⬲' },
 		]
 	}
 
@@ -30,6 +30,9 @@ export default class Pf2Actions extends Plugin {
 
 		// This register the plugin to process the text
 		this.registerMarkdownPostProcessor(this.markdownPostProcessor.bind(this));
+
+		// Register the live preview plugin
+		// this.registerEditorExtension([pf2ActionsLivePlugin])
 
 		// Everything ready
 		console.log('Pathfinder 2E Actions loaded')
