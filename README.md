@@ -1,4 +1,4 @@
-# Pathfinder 2E Actions
+# Pathfinder 2E Action Icons
 
 Injection of the Pathfinder 2E icons for Action, Double Action, Triple Action, Free Action e Reaction.
 
