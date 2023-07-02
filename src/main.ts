@@ -8,17 +8,25 @@ import Pf2ActionsSettingsTab, { DEFAULT_SETTINGS, Pf2ActionsSettings } from './s
 
 export const PF2_CLASS = 'pf2-actions'
 
+export const ACTION_STRINGS = {
+	one: '⬻',
+	two: '⬺',
+	three: '⬽',
+	reaction: '⬲',
+	free: '⭓'
+}
+
 export default class Pf2Actions extends Plugin {
 	settings: Pf2ActionsSettings;
 
 	actionReplacements() {
 		const trigger = this.settings.triggerWord
 		return [
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.freeActionString}\\s*$`, 'ig'), actionText: '⭓' },
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.oneActionString}\\s*$`, 'ig'), actionText: '⬻' },
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.twoActionString}\\s*$`, 'ig'), actionText: '⬺' },
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.threeActionString}\\s*$`, 'ig'), actionText: '⬽' },
-			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.reactionActionString}\\s*$`, 'ig'), actionText: '⬲' },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.freeActionString}\\s*$`, 'ig'), actionText: ACTION_STRINGS.free },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.oneActionString}\\s*$`, 'ig'), actionText: ACTION_STRINGS.one },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.twoActionString}\\s*$`, 'ig'), actionText: ACTION_STRINGS.two },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.threeActionString}\\s*$`, 'ig'), actionText: ACTION_STRINGS.three },
+			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.reactionActionString}\\s*$`, 'ig'), actionText: ACTION_STRINGS.reaction },
 		]
 	}
 
@@ -29,10 +37,10 @@ export default class Pf2Actions extends Plugin {
 		this.addSettingTab(new Pf2ActionsSettingsTab(this.app, this))
 
 		// This register the plugin to process the text
-		this.registerMarkdownPostProcessor(this.markdownPostProcessor.bind(this));
+		this.registerMarkdownPostProcessor(this.markdownPostProcessor.bind(this))
 
 		// Register the live preview plugin
-		// this.registerEditorExtension([pf2ActionsLivePlugin])
+		this.registerEditorExtension([pf2ActionsLivePlugin(this)])
 
 		// Everything ready
 		console.log('Pathfinder 2E Actions loaded')
