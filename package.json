@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-pf2-actions",
-	"version": "0.1.0",
+	"version": "0.9.0",
 	"description": "This is an Pathfinder 2E plugin for displaying action icons in Obsidian (https://obsidian.md)",
 	"main": "main.js",
 	"scripts": {
