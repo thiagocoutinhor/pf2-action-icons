@@ -38,12 +38,13 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 		new Setting(container)
 			.setHeading()
 			.setName('Actions')
+			.setDesc('The text used to identify each action.')
 
 		new Setting(container)
 			.setName(
 				createFragment(e => {
 					e.createSpan({ text: ACTION_STRINGS.one, cls: 'pf2-actions'})
-					e.createSpan({ text: ' One action string'})
+					e.createSpan({ text: ' One action'})
 				})
 			)
 			.addText(text => text
@@ -59,7 +60,7 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 			.setName(
 				createFragment(e => {
 					e.createSpan({ text: ACTION_STRINGS.two, cls: 'pf2-actions'})
-					e.createSpan({ text: ' Two actions string'})
+					e.createSpan({ text: ' Two actions'})
 				})
 			)
 			.addText(text => text
@@ -75,7 +76,7 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 			.setName(
 				createFragment(e => {
 					e.createSpan({ text: ACTION_STRINGS.three, cls: 'pf2-actions'})
-					e.createSpan({ text: ' Three actions string'})
+					e.createSpan({ text: ' Three actions'})
 				})
 			)
 			.addText(text => text
@@ -91,7 +92,7 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 			.setName(
 				createFragment(e => {
 					e.createSpan({ text: ACTION_STRINGS.free, cls: 'pf2-actions'})
-					e.createSpan({ text: ' Free action string'})
+					e.createSpan({ text: ' Free action'})
 				})
 			)
 			.addText(text => text
@@ -107,7 +108,7 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 			.setName(
 				createFragment(e => {
 					e.createSpan({ text: ACTION_STRINGS.reaction, cls: 'pf2-actions'})
-					e.createSpan({ text: ' Reaction string'})
+					e.createSpan({ text: ' Reaction'})
 				})
 			)
 			.addText(text => text
