@@ -5,6 +5,7 @@
 import { MarkdownPostProcessorContext, MarkdownRenderChild, Plugin } from 'obsidian';
 import { pf2ActionsLivePlugin } from './live-preview'
 import Pf2ActionsSettingsTab, { DEFAULT_SETTINGS, Pf2ActionsSettings } from './settings';
+import { Extension } from '@codemirror/state';
 
 export const PF2_CLASS = 'pf2-actions'
 export const TRIGGER_WORD = 'pf2'
@@ -19,6 +20,7 @@ export const ACTION_STRINGS = {
 
 export default class Pf2Actions extends Plugin {
 	settings: Pf2ActionsSettings;
+	private editorExtensions: Extension[] = []
 
 	actionReplacements() {
 		const trigger = TRIGGER_WORD
@@ -41,7 +43,8 @@ export default class Pf2Actions extends Plugin {
 		this.registerMarkdownPostProcessor(this.markdownPostProcessor.bind(this))
 
 		// Register the live preview plugin
-		this.registerEditorExtension([pf2ActionsLivePlugin(this)])
+		this.registerEditorExtension(this.editorExtensions)
+		this.updateExtensions()
 
 		// Everything ready
 		console.log('Pathfinder 2E Actions loaded')
@@ -51,8 +54,15 @@ export default class Pf2Actions extends Plugin {
 		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData())
 	}
 
+	updateExtensions() {
+		this.editorExtensions.length = 0
+		this.editorExtensions.push(pf2ActionsLivePlugin(this))
+		this.app.workspace.updateOptions()
+	}
+
 	async saveSettings() {
 		await this.saveData(this.settings)
+		this.updateExtensions()
 	}
 
 	async markdownPostProcessor(element: HTMLElement, context: MarkdownPostProcessorContext): Promise<any> {
