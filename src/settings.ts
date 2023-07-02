@@ -2,7 +2,6 @@ import { App, Setting, PluginSettingTab} from 'obsidian'
 import Pf2Actions, { ACTION_STRINGS } from './main'
 
 export interface Pf2ActionsSettings {
-	triggerWord: string;
 	oneActionString: string;
 	twoActionString: string;
 	threeActionString: string;
@@ -11,7 +10,6 @@ export interface Pf2ActionsSettings {
 }
 
 export const DEFAULT_SETTINGS: Pf2ActionsSettings = {
-	triggerWord: 'pf2',
 	oneActionString: '1',
 	twoActionString: '2',
 	threeActionString: '3',
@@ -31,18 +29,6 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 		const {containerEl: root} = this;
 		root.empty();
 		root.createEl('h2', {text: 'Pathfinder 2E Actions Settings'});
-
-		new Setting(root)
-			.setName('Plugin trigger')
-			.setDesc('Used to trigger the plugging. Must be the first thing inside a code markdown to trigger the replacement. (eg. `pf2: a`)')
-			.addText(text => text
-				.setPlaceholder(DEFAULT_SETTINGS.triggerWord)
-				.setValue(this.plugin.settings.triggerWord)
-				.onChange(async (value) => {
-					this.plugin.settings.triggerWord = value || DEFAULT_SETTINGS.triggerWord;
-					await this.plugin.saveSettings();
-				})
-			);
 
 		this.actionSettings(root.createDiv())
 	}

@@ -7,6 +7,7 @@ import { pf2ActionsLivePlugin } from './live-preview'
 import Pf2ActionsSettingsTab, { DEFAULT_SETTINGS, Pf2ActionsSettings } from './settings';
 
 export const PF2_CLASS = 'pf2-actions'
+export const TRIGGER_WORD = 'pf2'
 
 export const ACTION_STRINGS = {
 	one: '⬻',
@@ -20,7 +21,7 @@ export default class Pf2Actions extends Plugin {
 	settings: Pf2ActionsSettings;
 
 	actionReplacements() {
-		const trigger = this.settings.triggerWord
+		const trigger = TRIGGER_WORD
 		return [
 			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.freeActionString}\\s*$`, 'ig'), actionText: ACTION_STRINGS.free },
 			{ regex: new RegExp(`^\\s*${trigger}:\\s*${this.settings.oneActionString}\\s*$`, 'ig'), actionText: ACTION_STRINGS.one },
