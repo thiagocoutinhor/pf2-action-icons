@@ -1,5 +1,5 @@
 import { App, Setting, PluginSettingTab} from 'obsidian'
-import Pf2Actions from './main'
+import Pf2Actions, { ACTION_STRINGS } from './main'
 
 export interface Pf2ActionsSettings {
 	triggerWord: string;
@@ -56,7 +56,7 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 		new Setting(container)
 			.setName(
 				createFragment(e => {
-					e.createSpan({ text: '1', cls: 'pf2-actions'})
+					e.createSpan({ text: ACTION_STRINGS.one, cls: 'pf2-actions'})
 					e.createSpan({ text: ' One action string'})
 				})
 			)
@@ -72,7 +72,7 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 		new Setting(container)
 			.setName(
 				createFragment(e => {
-					e.createSpan({ text: '2', cls: 'pf2-actions'})
+					e.createSpan({ text: ACTION_STRINGS.two, cls: 'pf2-actions'})
 					e.createSpan({ text: ' Two actions string'})
 				})
 			)
@@ -88,7 +88,7 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 		new Setting(container)
 			.setName(
 				createFragment(e => {
-					e.createSpan({ text: '3', cls: 'pf2-actions'})
+					e.createSpan({ text: ACTION_STRINGS.three, cls: 'pf2-actions'})
 					e.createSpan({ text: ' Three actions string'})
 				})
 			)
@@ -104,7 +104,7 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 		new Setting(container)
 			.setName(
 				createFragment(e => {
-					e.createSpan({ text: 'f', cls: 'pf2-actions'})
+					e.createSpan({ text: ACTION_STRINGS.free, cls: 'pf2-actions'})
 					e.createSpan({ text: ' Free action string'})
 				})
 			)
@@ -120,7 +120,7 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 		new Setting(container)
 			.setName(
 				createFragment(e => {
-					e.createSpan({ text: 'r', cls: 'pf2-actions'})
+					e.createSpan({ text: ACTION_STRINGS.reaction, cls: 'pf2-actions'})
 					e.createSpan({ text: ' Reaction string'})
 				})
 			)
