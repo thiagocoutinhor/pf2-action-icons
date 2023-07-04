@@ -3,8 +3,8 @@
 	"name": "Pathfinder 2E Action Icons",
 	"version": "1.1.0",
 	"minAppVersion": "0.15.0",
-	"description": "This is an plugin for displaying Pathfinder 2E action icons in Obsidian",
+	"description": "Displays Pathfinder 2E action icons easily",
 	"author": "Thiago Coutinho",
-	"authorUrl": "",
+	"authorUrl": "https://github.com/thiagocoutinhor",
 	"isDesktopOnly": false
 }

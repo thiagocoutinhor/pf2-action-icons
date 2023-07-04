@@ -1,5 +1,6 @@
 import { App, Setting, PluginSettingTab} from 'obsidian'
 import Pf2Actions, { ACTION_STRINGS } from './main'
+import { clear } from 'console';
 
 export interface Pf2ActionsSettings {
 	oneActionString: string;
@@ -27,20 +28,14 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 
 	display(): void {
 		const {containerEl: root} = this;
-		root.empty();
-		root.createEl('h2', {text: 'Pathfinder 2E Actions Settings'});
+		root.empty()
 
-		this.actionSettings(root.createDiv())
-	}
-
-	actionSettings(container: HTMLDivElement) {
-		container.empty()
-		new Setting(container)
+		new Setting(root)
 			.setHeading()
 			.setName('Actions')
 			.setDesc('The text used to identify each action.')
 
-		new Setting(container)
+		new Setting(root)
 			.setName(
 				createFragment(e => {
 					e.createSpan({ text: ACTION_STRINGS.one, cls: 'pf2-actions'})
@@ -56,7 +51,7 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 				})
 			);
 
-		new Setting(container)
+		new Setting(root)
 			.setName(
 				createFragment(e => {
 					e.createSpan({ text: ACTION_STRINGS.two, cls: 'pf2-actions'})
@@ -72,7 +67,7 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 				})
 			);
 
-		new Setting(container)
+		new Setting(root)
 			.setName(
 				createFragment(e => {
 					e.createSpan({ text: ACTION_STRINGS.three, cls: 'pf2-actions'})
@@ -88,7 +83,7 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 				})
 			);
 
-		new Setting(container)
+		new Setting(root)
 			.setName(
 				createFragment(e => {
 					e.createSpan({ text: ACTION_STRINGS.free, cls: 'pf2-actions'})
@@ -104,7 +99,7 @@ export default class Pf2ActionsSettingsTab extends PluginSettingTab {
 				})
 			);
 
-		new Setting(container)
+		new Setting(root)
 			.setName(
 				createFragment(e => {
 					e.createSpan({ text: ACTION_STRINGS.reaction, cls: 'pf2-actions'})
