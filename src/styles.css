@@ -9,5 +9,6 @@
 
 .pf2-actions {
     font-family: "Pathfinder";
-    font-weight: normal;
+    font-weight: normal!important;
+    font-style: normal!important;
 }
