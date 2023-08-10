@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/thiagocoutinhor/pf2-action-icons/compare/1.1.2...1.1.3) (2023-08-10)
+
+
+### Bug Fixes
+
+* weight and italics affecting the icons ([91597b4](https://github.com/thiagocoutinhor/pf2-action-icons/commit/91597b48b738899ef261111ce7d615cb064887ea))
+
 ## [1.1.2](https://github.com/thiagocoutinhor/pf2-action-icons/compare/1.1.1...1.1.2) (2023-08-10)
 
 
