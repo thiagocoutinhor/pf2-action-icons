@@ -1,18 +1,18 @@
 # Pathfinder 2E Action Icons
 
-Injection of the Pathfinder 2E icons for Action, Double Action, Triple Action, Free Action e Reaction.
+Injection of the Pathfinder 2E icons for Action, Double Action, Triple Action, Free Action and Reaction.
 
 # Usage
 
-Place a code block with the type of action that you want (eg. `pf2:2` for a Double Action) and it will be replaced by the icon in view and live preview.
+Place a code block with the type of action that you want (eg. \`pf2:2\` for a Double Action) and it will be replaced by the icon in view and live preview.
 
 | Code    | Action        |
 | ------- | ------------- |
-| `pf2:1` | Action        |
-| `pf2:2` | Two actions   |
-| `pf2:3` | Three actions |
-| `pf2:0` | Free action   |
-| `pf2:r` | Reaction      |
+| \`pf2:1\` | Action        |
+| \`pf2:2\` | Two actions   |
+| \`pf2:3\` | Three actions |
+| \`pf2:0\` | Free action   |
+| \`pf2:r\` | Reaction      |
 
 ## Fantasy Statblocks
 
