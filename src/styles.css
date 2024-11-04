@@ -5,6 +5,7 @@
     font-weight: normal;
     font-style: normal;
     font-display: block;
+	unicode-range: U+2B32, U+2B3A, U+2B3B, U+2B3D, U+2B53;
 }
 
 .pf2-actions {
