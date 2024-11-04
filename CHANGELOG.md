@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/thiagocoutinhor/pf2-action-icons/compare/1.1.3...1.1.4) (2024-11-04)
+
+
+### Bug Fixes
+
+* adds unicode range to limit characters ([ff6ef36](https://github.com/thiagocoutinhor/pf2-action-icons/commit/ff6ef3646bde54d4168d078f0bf98f349f7a0bb3))
+
 ## [1.1.3](https://github.com/thiagocoutinhor/pf2-action-icons/compare/1.1.2...1.1.3) (2023-08-10)
 
 
