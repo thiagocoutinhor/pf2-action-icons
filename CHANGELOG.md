@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.5](https://github.com/thiagocoutinhor/pf2-action-icons/compare/1.1.4...1.1.5) (2026-10-24)
+
+
+### Bug Fixes
+
+* live preview on obsidian version 1.14 ([a612b39](https://github.com/thiagocoutinhor/pf2-action-icons/commit/a612b39b96913b623f4ea1e7c424f67ad3e87a78))
+
 ## [1.1.4](https://github.com/thiagocoutinhor/pf2-action-icons/compare/1.1.3...1.1.4) (2024-11-04)
 
 
