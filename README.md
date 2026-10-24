@@ -20,4 +20,4 @@ If the property is configured to be `rendered as Markdown` you can add the code 
 
 # Inspiration
 
-This plugin was stringly inspired in the [Dice Roller Plugin](https://github.com/javalent/dice-roller), by Javalent. And by the [PF2 Action Icons](https://github.com/Obsidian-TTRPG-Community/ObsidianTTRPGShare/tree/main/Pathfinder/2E/action-icons) documentation of the [Obsidian TTRPG Community](https://github.com/Obsidian-TTRPG-Community).
+This plugin was strongly inspired in the [Dice Roller Plugin](https://github.com/javalent/dice-roller), by Javalent. And by the [PF2 Action Icons](https://github.com/Obsidian-TTRPG-Community/ObsidianTTRPGShare/tree/main/Pathfinder/2E/action-icons) documentation of the [Obsidian TTRPG Community](https://github.com/Obsidian-TTRPG-Community).

@@ -66,8 +66,8 @@ export function pf2ActionsLivePlugin(plugin: Pf2Actions) {
                             for (const replacement of replacements) {
                                 if (original.match(replacement.regex)) {
                                     builder.add(
-                                        node.from-1,
-                                        node.to+1,
+                                        node.from,
+                                        node.to,
                                         Decoration.replace({
                                             widget: new Pf2ActionWidget(replacement.actionText),
                                             inclusive: false,
